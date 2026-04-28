@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not A Stylist</title>
+    <style>
+        /* Avant-Garde Dark Aesthetic */
+        body {
+            background-color: #0a0a0a; /* Deep black */
+            color: #e0e0e0;
+            font-family: "Courier New", Courier, monospace; /* Industrial feel */
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+        }
+
+        header {
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 4px double #333;
+            background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 12px;
+            margin: 0;
+            color: #fff;
+            text-shadow: 2px 2px #444;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            padding: 60px 20px;
+        }
+
+        /* Product Module */
+        .product-card {
+            background: #111;
+            border: 1px solid #333;
+            width: 450px;
+            padding: 20px;
+            box-shadow: 10px 10px 0px #1a1a1a; /* Brutalist shadow */
+        }
+
+        /* Slideshow Container */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 550px;
+            background: #000;
+            border: 1px solid #444;
+            overflow: hidden;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Hidden by default */
+        }
+
+        .slideshow-container img.active {
+            display: block;
+        }
+
+        /* Manual Buttons */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid #555;
+            padding: 15px 10px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .nav-btn:hover { background: #fff; color: #000; }
+        .prev { left: 0; }
+        .next { right: 0; }
+
+        /* Description Area */
+        .description {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+
+        .desc-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .desc-text {
+            font-size: 0.75rem;
+            line-height: 1.6;
+            color: #888;
+            text-transform: none; /* Easier to read paragraph text */
+        }
+
+        footer {
+            text-align: center;
+            padding: 100px 0;
+            border-top: 1px solid #222;
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Not A Stylist</h1>
+    </header>
+
+    <div class="main-content">
+        
+        <div class="product-card">
+            <div class="slideshow-container" id="slideshow1">
+                <button class="nav-btn prev" onclick="changeSlide('slideshow1', -1)">&#10094;</button>
+                <img src="YSLPANTS.jpg" class="active">
+                <img src="YSLPANTS2.jpg">
+                <button class="nav-btn next" onclick="changeSlide('slideshow1', 1)">&#10095;</button>
+            </div>
+            <div class="description">
+                <span class="desc-title">SS14 Zebra Denim</span>
+                <p class="desc-text">Saint Laurant Paris SS14 Zebra Denim (Runway) W/29/ 31.5</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="slideshow-container" id="slideshow2">
+                <button class="nav-btn prev" onclick="changeSlide('slideshow2', -1)">&#10094;</button>
+                <img src="YSL.jpg" class="active">
+                <img src="YSL1.jpg">
+                <img src="YSL2.jpg">
+                <img src="YSL3.jpg">
+                <button class="nav-btn next" onclick="changeSlide('slideshow2', 1)">&#10095;</button>
+            </div>
+            <div class="description">
+                <span class="desc-title">Suede Wyatt Boots</span>
+                <p class="desc-text">
+                    Designed by Hedi Slimane for the Fall/Winter 2013 collection, the Wyatt boot is known for its slim, high-fashion silhouette inspired by 1970s glam rock and Western styling.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        NOT A STYLIST // ARCHIVE 2026
+    </footer>
+
+    <script>
+        function changeSlide(containerId, step) {
+            const container = document.getElementById(containerId);
+            const imgs = container.getElementsByTagName('img');
+            let activeIndex = 0;
+
+            for (let i = 0; i < imgs.length; i++) {
+                if (imgs[i].classList.contains('active')) {
+                    activeIndex = i;
+                    imgs[i].classList.remove('active');
+                }
+            }
+
+            let nextIndex = activeIndex + step;
+            if (nextIndex >= imgs.length) nextIndex = 0;
+            if (nextIndex < 0) nextIndex = imgs.length - 1;
+
+            imgs[nextIndex].classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
